@@ -7,10 +7,21 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 * React/Vite 
 * TailwindCSS - https://tailwindcss.com/
 
+### Testing
+
+* Cypress
+* Jest
+
+
 ## Mobile Frontend
 
 * React Native
 * NativeWind - https://www.nativewind.dev/
+
+### Testing
+
+* React Native Testing Library
+* Jest
 
 ## Backend
 
