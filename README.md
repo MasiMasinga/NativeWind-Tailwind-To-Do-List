@@ -14,4 +14,4 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 
 ## Backend
 
-* Django Restframework + PostgreSQL
+* Django Restframework + PostgreSQL + AWS
