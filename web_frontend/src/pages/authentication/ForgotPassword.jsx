@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+// React Hook Form
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-  const handleSubmit = (e) => {
+const ForgotPasswordSchema = yup.object().shape({
+  Email: yup.string().email('Invalid email').required('Required'),
+});
+
+const ForgotPassword = () => {
+  const { forgotpassword, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(ForgotPasswordSchema)
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
     e.preventDefault();
     console.log(email);
-  }
+  };
 
   return (
     <div className="w-screen h-screen items-center justify-center py-12 px-4">
@@ -17,7 +29,7 @@ const ForgotPassword = () => {
         </h2>
       </div>
 
-      <form action="#" method="POST" className='space-y-6' onSubmit={(e) => handleSubmit(e)}>
+      <form action="#" method="POST" className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
         <input type="hidden" name="remember" defaultValue="true" />
 
         <div className='text-center'>
@@ -33,7 +45,9 @@ const ForgotPassword = () => {
               required
               className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
+              {...forgotpassword("email")}
             />
+            {errors.Email && <p className='text-red-600'>{errors.Email.message}</p>}
           </div>
         </div>
 
