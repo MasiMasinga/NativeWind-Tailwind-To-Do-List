@@ -10,7 +10,7 @@ const ForgotPasswordSchema = yup.object().shape({
 });
 
 const ForgotPassword = () => {
-  const { forgotpassword, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(ForgotPasswordSchema)
   });
 
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
               required
               className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
-              {...forgotpassword("email")}
+              {...register("email")}
             />
             {errors.Email && <p className='text-red-600'>{errors.Email.message}</p>}
           </div>

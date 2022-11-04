@@ -10,11 +10,11 @@ import * as yup from "yup";
 
 const LoginSchema = yup.object().shape({
   Email: yup.string().email('Invalid email').required('Required'),
-  Password: yup.string().required('Password is Too Short!').min(8),
+  Password: yup.string().required('Password is Too Short!').min(6),
 });
 
 const Login = () => {
-  const { login, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema)
   });
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Login = () => {
               required
               className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
-              {...login("email")}
+              {...register("email")}
             />
             {errors.Email && <p className='text-red-600'>{errors.Email.message}</p>}
           </div>
@@ -69,7 +69,7 @@ const Login = () => {
               required
               className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Password"
-              {...login("password")}
+              {...register("password")}
             />
             {errors.Password && <p className='text-red-600'>{errors.Password.message}</p>}
           </div>
