@@ -14,8 +14,8 @@ const RegisterSchema = yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required'),
   Email: yup.string().email('Invalid email').required('Required'),
-  Password: yup.string().required('Password is Too Short!').min(8),
-  ConfirmPassword: yup.string().required('Confirm Password is Too Short!').min(8),
+  Password: yup.string().required('Password is Too Short!').min(6),
+  ConfirmPassword: yup.string().required('Confirm Password is Too Short!').min(6),
 });
 
 const Register = () => {
