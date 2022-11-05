@@ -8,6 +8,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+// Components
+import Button from '../../common/components/Button';
+
 const RegisterSchema = yup.object().shape({
   Name: yup.string()
     .min(2, 'Too Short!')
@@ -26,12 +29,11 @@ const Register = () => {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    e.preventDefault();
-    navigate('/auth/login');
+    navigate('/tasks');
   };
 
   return (
-    <div className=" w-screen h-screen items-center justify-center py-12 px-4">
+    <div className="bg-white w-screen h-screen items-center justify-center py-12 px-4">
 
       <div className='m-4'>
         <h2 className="text-center text-3xl font-bold tracking-tight text-black">
@@ -52,7 +54,7 @@ const Register = () => {
             type="name"
             autoComplete="name"
             required
-            className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
+            className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
             placeholder="Name"
             {...register("name")}
           />
@@ -70,7 +72,7 @@ const Register = () => {
               type="email"
               autoComplete="email"
               required
-              className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
+              className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
               {...register("email")}
             />
@@ -89,7 +91,7 @@ const Register = () => {
               type="password"
               autoComplete="current-password"
               required
-              className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
+              className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Password"
               {...register("password")}
             />
@@ -105,7 +107,7 @@ const Register = () => {
               type="password"
               autoComplete="confirm-password"
               required
-              className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
+              className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Confirm Password"
               {...register("confirmPassword")}
             />
@@ -114,9 +116,7 @@ const Register = () => {
         </div>
 
         <div className='text-center'>
-          <button type="submit" className="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-            Register
-          </button>
+          <Button title="Register" />
         </div>
 
         <div className='text-center font-medium text-sm'>

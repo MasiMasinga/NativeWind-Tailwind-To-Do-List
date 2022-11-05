@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 // React Hook Form
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+// Components
+import Button from '../../common/components/Button';
 
 const ForgotPasswordSchema = yup.object().shape({
   Email: yup.string().email('Invalid email').required('Required'),
@@ -21,7 +24,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="w-screen h-screen items-center justify-center py-12 px-4">
+    <div className="bg-white w-screen h-screen items-center justify-center py-12 px-4">
 
       <div className='m-4'>
         <h2 className="text-center text-3xl font-bold tracking-tight text-black">
@@ -43,7 +46,7 @@ const ForgotPassword = () => {
               type="email"
               autoComplete="email"
               required
-              className='w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
+              className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
               {...register("email")}
             />
@@ -52,9 +55,7 @@ const ForgotPassword = () => {
         </div>
 
         <div className='text-center'>
-          <button type="submit" className="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-            Recover Password
-          </button>
+          <Button title='Recover Password' />
         </div>
 
         <div className='text-center font-medium text-sm'>
