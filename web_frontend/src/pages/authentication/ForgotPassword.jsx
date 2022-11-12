@@ -7,10 +7,12 @@ import * as yup from "yup";
 
 // Components
 import Button from '../../common/components/Button';
+import Form from '../../common/components/Form';
+import InputField from '../../common/components/InputField';
 
-const ForgotPasswordSchema = yup.object().shape({
-  Email: yup.string().email('Invalid email').required('Required'),
-});
+const ForgotPasswordSchema = yup.object({
+  email: yup.string().email().required(),
+}).required();
 
 const ForgotPassword = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -20,7 +22,6 @@ const ForgotPassword = () => {
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
     e.preventDefault();
-    console.log(email);
   };
 
   return (
@@ -50,7 +51,7 @@ const ForgotPassword = () => {
               placeholder="Email Address"
               {...register("email")}
             />
-            {errors.Email && <p className='text-red-600'>{errors.Email.message}</p>}
+            {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
           </div>
         </div>
 
