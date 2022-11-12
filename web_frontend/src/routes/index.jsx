@@ -14,6 +14,7 @@ const AsyncResetPassword = lazy(() => import("../pages/authentication/ResetPassw
 const AsyncChangeEmail = lazy(() => import("../pages/authentication/ChangeEmail"));
 const AsyncPageNotFound = lazy(() => import("../pages/page-not-found/index"));
 const AsyncTasks = lazy(() => import("../pages/tasks/index"));
+const AsyncProfile = lazy(() => import("../pages/profile/index"));
 
 const AppRoutes = () => {
   return (
@@ -65,6 +66,14 @@ const AppRoutes = () => {
           element={
             <Suspense fallback={<Loader />}>
               <AsyncTasks />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AsyncProfile />
             </Suspense>
           }
         />
