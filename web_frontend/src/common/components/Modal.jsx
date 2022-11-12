@@ -7,6 +7,7 @@ const Modal = ({
   onhandleClose,
   onSubmit,
   buttonTitle,
+  deleteTask,
 }) => {
   return (
     <React.Fragment>
@@ -30,7 +31,7 @@ const Modal = ({
               <p className="my-4 text-black text-lg leading-relaxed">
                 {taskDescription}
               </p>
-              <div className="mb-6">
+              <div className={deleteTask === true ? "hidden" : "mb-6"}>
                 <input
                   type="text"
                   id="large-input"
