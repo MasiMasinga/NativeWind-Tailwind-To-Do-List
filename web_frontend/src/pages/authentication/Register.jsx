@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 // React Router Dom
 import { useNavigate } from "react-router-dom";
@@ -11,15 +11,12 @@ import * as yup from "yup";
 // Components
 import Button from '../../common/components/Button';
 
-const RegisterSchema = yup.object().shape({
-  Name: yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  Email: yup.string().email('Invalid email').required('Required'),
-  Password: yup.string().required('Password is Too Short!').min(6),
-  ConfirmPassword: yup.string().required('Confirm Password is Too Short!').min(6),
-});
+const RegisterSchema = yup.object({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+  confirmPassword: yup.string().required(),
+}).required();
 
 const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -42,7 +39,6 @@ const Register = () => {
       </div>
 
       <form action="#" method="POST" className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" name="remember" defaultValue="true" />
 
         <div className='text-center'>
           <label htmlFor="name" className="sr-only">
@@ -52,13 +48,13 @@ const Register = () => {
             id="name"
             name="name"
             type="name"
-            autoComplete="name"
+            autoComplete="on"
             required
             className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
             placeholder="Name"
             {...register("name")}
           />
-          {errors.Name && <p className='text-red-600'>{errors.Name.message}</p>}
+          {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
         </div>
 
         <div className='text-center'>
@@ -70,13 +66,13 @@ const Register = () => {
               id="email-address"
               name="email"
               type="email"
-              autoComplete="email"
+              autoComplete="on"
               required
               className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Email Address"
               {...register("email")}
             />
-            {errors.email && <p className='text-red-600'>{errors.Email.message}</p>}
+            {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
           </div>
         </div>
 
@@ -89,13 +85,13 @@ const Register = () => {
               id="password"
               name="password"
               type="password"
-              autoComplete="current-password"
+              autoComplete="on"
               required
               className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Password"
               {...register("password")}
             />
-            {errors.Password && <p className='text-red-600'>{errors.Password.message}</p>}
+            {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
           </div>
         </div>
 
@@ -105,19 +101,21 @@ const Register = () => {
               id="confirm-password"
               name="confirm-password"
               type="password"
-              autoComplete="confirm-password"
+              autoComplete="on"
               required
               className='bg-white w-1/3 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500'
               placeholder="Confirm Password"
               {...register("confirmPassword")}
             />
-            {errors.ConfirmPassword && <p className='text-red-600'>{errors.ConfirmPassword.message}</p>}
+            {errors.confirmPassword && <p className='text-red-600'>{errors.confirmPassword.message}</p>}
           </div>
         </div>
 
         <div className='text-center'>
           <Button title="Register" />
         </div>
+
+        <input type="submit" />
 
         <div className='text-center font-medium text-sm'>
           <a href="/auth/login">

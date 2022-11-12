@@ -11,10 +11,10 @@ import * as yup from "yup";
 // Components
 import Button from '../../common/components/Button';
 
-const LoginSchema = yup.object().shape({
-  Email: yup.string().email('Invalid email').required('Required'),
-  Password: yup.string().required('Password is Too Short!').min(6),
-});
+const LoginSchema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+}).required();
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -37,7 +37,6 @@ const Login = () => {
       </div>
 
       <form action="#" method="POST" className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" name="remember" defaultValue="true" />
 
         <div className='text-center'>
           <label htmlFor="email-address" className="sr-only">
@@ -54,7 +53,7 @@ const Login = () => {
               placeholder="Email Address"
               {...register("email")}
             />
-            {errors.Email && <p className='text-red-600'>{errors.Email.message}</p>}
+            {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
           </div>
         </div>
 
@@ -73,7 +72,7 @@ const Login = () => {
               placeholder="Password"
               {...register("password")}
             />
-            {errors.Password && <p className='text-red-600'>{errors.Password.message}</p>}
+            {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
           </div>
         </div>
 
@@ -88,6 +87,8 @@ const Login = () => {
         <div className='text-center'>
           <Button title='Login' />
         </div>
+
+        <input type="submit" />
 
         <div className='text-center font-medium text-sm'>
           <a href="/">
