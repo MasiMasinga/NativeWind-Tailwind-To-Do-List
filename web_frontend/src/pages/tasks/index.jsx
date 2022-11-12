@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 
 // React Router Dom
 import { useNavigate } from 'react-router';
@@ -42,7 +42,7 @@ const Tasks = () => {
   };
 
   const handleLogout = () => {
-    console.log("Logout");
+    navigate("/");
   }
 
   return (
@@ -112,7 +112,7 @@ const Tasks = () => {
         )
       }
 
-    </div >
+    </div>
   )
 }
 
