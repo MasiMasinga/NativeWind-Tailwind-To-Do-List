@@ -1,5 +1,6 @@
-
 [x] Add Skeleton Loading
-[x] Auth Screen Fixes
+[x] Add Toast Notification
+[x] Complete SEO 
+[x] Add Docker
 [x] Local Storage for Complete/Undo Tasks
-
+[x] API Integration
