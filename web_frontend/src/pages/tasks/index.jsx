@@ -1,4 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, Fragment } from "react"
+
+// React Router Dom
+import { useNavigate } from 'react-router';
 
 // Components
 import Button from "../../common/components/Button";
@@ -7,6 +10,7 @@ import TaskContainer from "../../common/components/TaskContainer";
 import AppHeader from '../../common/components/AppHeader'
 
 const Tasks = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -25,10 +29,31 @@ const Tasks = () => {
     setShowModal(false);
   };
 
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
+  const handleChangeEmail = () => {
+    navigate("/auth/change-email");
+  };
+
+  const handleResetPassword = () => {
+    navigate("/auth/reset-password");
+  };
+
+  const handleLogout = () => {
+    console.log("Logout");
+  }
+
   return (
     <div className="bg-white h-screen w-screen">
 
-      <AppHeader />
+      <AppHeader
+        profile={handleProfile}
+        changeEmail={handleChangeEmail}
+        resetPassword={handleResetPassword}
+        onLogout={handleLogout}
+      />
 
       <h5 className='text-black font-bold text-2xl m-5 text-center p-5'>
         Welcome Masi!
