@@ -16,7 +16,7 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 ## Mobile Frontend
 
 * React Native
-* NativeWind - https://www.nativewind.dev/
+* Styled Components - https://styled-components.com/
 
 ### Testing
 
@@ -25,4 +25,4 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 
 ## Backend
 
-* Django Restframework + PostgreSQL + AWS
+* Node/ExpressJS + MongoDB + Prisma + PostgreSQL + AWS
