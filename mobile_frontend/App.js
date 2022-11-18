@@ -1,13 +1,13 @@
 import React from 'react';
-import {StatusBar, Text, View} from 'react-native';
+import {LogBox} from 'react-native';
+import RootNavigation from './src/navigation/RootNavigation';
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+]);
 
 const App = () => {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <RootNavigation />;
 };
 
 export default App;
