@@ -46,7 +46,7 @@ const TasksScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppHeader name={userName} />
+      <AppHeader name={`Welcome ${userName}`} />
 
       <AddTaskButton onPress={() => setShowModal(true)} />
 
