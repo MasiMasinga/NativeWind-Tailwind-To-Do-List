@@ -17,7 +17,10 @@ import Button from '../../../common/components/Button';
 import styles from './styles';
 
 // React Native Navigation
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+
+// Styled Components
+import {KeyboardAvoidingViewContainer} from './styles';
 
 const RegisterScreen = () => {
   const navigation = useNavigation();

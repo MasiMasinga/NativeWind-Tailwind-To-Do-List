@@ -19,14 +19,24 @@ const Tasks = () => {
   const [deleteTask, setDeleteTask] = useState(false);
   const [taskState, setTaskState] = useState(false);
 
+  const handleAddTask = () => {
+    console.log("Add Task");
+  };
+
+  const handleEditTask = () => {
+    console.log("Edit Task");
+  };
+
+  const handleDeleteTask = () => {
+    console.log("Delete Task");
+  };
+
   const handleCompleteTask = () => {
     setTaskState(true);
-    setShowModal(false);
   };
 
   const handleUndoTask = () => {
     setTaskState(false);
-    setShowModal(false);
   };
 
   const handleProfile = () => {
@@ -79,7 +89,7 @@ const Tasks = () => {
             taskDescription="You are about to add a new task. Please enter the task name below."
             onCancel={() => setShowModal(false)}
             onhandleClose={() => setShowModal(false)}
-            onSubmit={() => setShowModal(false)}
+            onSubmit={handleAddTask}
             buttonTitle="Save"
           />
         )
@@ -92,7 +102,7 @@ const Tasks = () => {
             taskDescription="You are about to delete this task. Are you sure you want to continue?"
             onCancel={() => setShowDeleteModal(false)}
             onhandleClose={() => setShowDeleteModal(false)}
-            onSubmit={() => setShowDeleteModal(false)}
+            onSubmit={handleDeleteTask}
             buttonTitle="Delete"
             deleteTask={true}
           />
@@ -106,7 +116,7 @@ const Tasks = () => {
             taskDescription="You are about to edit this task name. Are you sure you want to continue?"
             onCancel={() => setShowEditModal(false)}
             onhandleClose={() => setShowEditModal(false)}
-            onSubmit={() => setShowEditModal(false)}
+            onSubmit={handleEditTask}
             buttonTitle="Save"
           />
         )

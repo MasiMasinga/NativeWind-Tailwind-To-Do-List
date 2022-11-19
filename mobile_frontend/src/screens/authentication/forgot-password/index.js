@@ -19,6 +19,9 @@ import styles from './styles';
 // React Native Navigation
 import {useNavigation} from '@react-navigation/native';
 
+// Utils
+import {Colors} from '../../../common/utils/constants';
+
 const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
 
