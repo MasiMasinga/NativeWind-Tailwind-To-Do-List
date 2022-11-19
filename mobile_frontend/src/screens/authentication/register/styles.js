@@ -1,12 +1,15 @@
 import {StyleSheet} from 'react-native';
 
+// Utils
+import {Colors} from '../../../common/utils/constants';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   textHeader: {
     textAlign: 'center',
-    color: 'black',
+    color: Colors.black,
     fontSize: 25,
     marginTop: 25,
     fontWeight: 'bold',
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: Colors.black,
     borderRadius: 6,
     margin: 10,
   },
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
   },
   bottomButtonText: {
     fontWeight: 'bold',
-    color: 'black',
+    color: Colors.black,
   },
 });
 
