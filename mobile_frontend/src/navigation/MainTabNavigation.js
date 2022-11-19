@@ -1,10 +1,10 @@
 import React from 'react';
 
 // React Native Vector Icons
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // React Native Navigation
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import ProfileStackNavigation from './ProfileStackNavigation';
 import TasksStackNavigation from './TasksStackNavigation';
@@ -24,8 +24,9 @@ const MainTabNavigation = () => {
         component={TasksStackNavigation}
         options={{
           tabBarLabel: 'Tasks',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+          tabBarIcon: ({color, size}) => (
+            // <MaterialCommunityIcons name="home" color={color} size={26} />
+            <Icon name="home" type="ionicon" color="#000" size={26} />
           ),
         }}
       />
@@ -34,8 +35,8 @@ const MainTabNavigation = () => {
         component={ProfileStackNavigation}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
+          tabBarIcon: ({color, size}) => (
+            <Icon name="account-circle" type="ionicon" color="#000" size={26} />
           ),
         }}
       />
