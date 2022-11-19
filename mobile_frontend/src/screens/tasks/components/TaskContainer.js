@@ -7,17 +7,28 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // Styles
 import styles from '../style';
 
+// Utils
+import {Colors} from '../../../common/utils/constants';
+
 const TaskContainer = ({
   title,
   editTask,
   deleteTask,
   completeTask,
   undoTask,
+  state,
 }) => {
   return (
     <View style={styles.taskContainer}>
       <View style={styles.taskContainerHeaderText}>
-        <Text>{title}</Text>
+        <Text
+          style={{
+            textDecorationLine: state === true ? 'line-through' : 'none',
+            textDecorationColor: 'black',
+            color: Colors.black,
+          }}>
+          {title}
+        </Text>
       </View>
 
       <View style={styles.actionIconContainer}>
