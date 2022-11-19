@@ -5,7 +5,7 @@ import React from 'react';
 import {Colors} from '../utils/constants';
 
 const AppHeader = ({name}) => {
-  return <Text style={styles.textNameHeader}>Welcome {name}</Text>;
+  return <Text style={styles.textNameHeader}>{name}</Text>;
 };
 
 const styles = StyleSheet.create({
