@@ -1,4 +1,4 @@
-# NativeWind-Tailwind-To-Do-List
+# To Do
 
 Simple To Do List Web and Mobile Application that requires authentication from the user and allows them to create a list to do tasks.
 
@@ -16,7 +16,6 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 ## Mobile Frontend
 
 * React Native
-* Styled Components - https://styled-components.com/
 
 ### Testing
 
