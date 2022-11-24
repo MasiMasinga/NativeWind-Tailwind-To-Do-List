@@ -1,23 +1,23 @@
-import React, {createContext, useContext, useState, useEffect} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // API
 
 // Context
 export const ProfileContext = createContext();
 
-export const ProfileProvider = ({children}) => {
+export const ProfileProvider = ({ children }) => {
   const [userName, setName] = useState('');
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const updateFirstName = () => {};
+  const updateFirstName = () => { };
 
-  const updateEmail = () => {};
+  const updateEmail = () => { };
 
-  const updatePassword = () => {};
+  const updatePassword = () => { };
 
-  const logout = () => {};
+  const logout = () => { };
 
   let value = {
     loading,
@@ -34,5 +34,5 @@ export const ProfileProvider = ({children}) => {
     logout,
   };
 
-  return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
+  return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
 };
