@@ -24,4 +24,4 @@ Simple To Do List Web and Mobile Application that requires authentication from t
 
 ## Backend
 
-* Node/ExpressJS + MongoDB + Prisma + PostgreSQL + AWS
+* Node/ExpressJS + MongoDB + Prisma 
