@@ -1,0 +1,11 @@
+[x] Logout API
+[x] Update Password API
+[x] Update Name API
+[x] Update Email API
+[x] Delete Account API
+[x] Forgot Password API
+[x] Create Task API
+[x] Get Task API
+[x] Get Tasks API
+[x] Update Task API
+[x] Delete Task API
