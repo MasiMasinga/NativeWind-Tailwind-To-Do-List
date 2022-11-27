@@ -20,7 +20,6 @@ model User {
 
 model Tasks {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  slug     String    @unique
   title    String
   author   User      @relation(fields: [authorId], references: [id])
   authorId String    @db.ObjectId
