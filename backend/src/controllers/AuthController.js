@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 async function Register(req, res) {
+
   try {
     
     let data = {
@@ -56,7 +57,7 @@ async function Register(req, res) {
       },
     });
 
-    res.status(201).json({ message: "User created successfully", user: newUser });
+    return res.status(201).json({ message: "User created successfully", user: newUser });
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" });
   }
@@ -64,12 +65,58 @@ async function Register(req, res) {
 
 async function Login(req, res) {
 
-    
+  try {
+        
+    let data = {
+        email: req.body.email,
+        password: req.body.password,
+    };
+
+    if (!data.email) {
+        return res.status(400).json({ message: "Email field is required" });
+    };
+
+    if (!data.password) {
+        return res.status(400).json({ message: "Password field is required" });
+    };
+
+    const user = await prisma.user.findUnique({
+        where: {
+            email: data.email
+        }
+    });
+
+    if (!user) {
+        return res.status(400).json({ message: "User does not exist" });
+    };
+
+    const validPassword = await bcrypt.compare(data.password, user.password);
+
+    if (!validPassword) {
+        return res.status(400).json({ message: "Invalid Password" });
+    };
+
+    const token = jwt.sign({ id: user.id, name: user.name, email: user.email }, 
+      process.env.JWT_SECRET, {expiresIn: 86400 }
+    );
+
+    return res.status(200).json({ message: "User logged in successfully", token: token });
+  } catch (error) {
+    return res.status(400).json({ message: "Something went wrong" });
+  }
 }
 
-async function Logout(req, res) {}
+async function Logout(req, res) {
 
-async function ResetPassword(req, res) {}
+  try {
+
+    return res.status(200).json({ message: "User logged out successfully" });
+
+  } catch (error) {
+    return res.status(400).json({ message: "Something went wrong" });
+  }
+
+}
 
 async function UpdatePassword(req, res) {}
 
@@ -85,7 +132,6 @@ module.exports = {
   Register,
   Login,
   Logout,
-  ResetPassword,
   UpdatePassword,
   ForgotPassword,
   UpdateName,

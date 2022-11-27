@@ -1,29 +1,21 @@
 const { Router } = require("express");
-
-// Auth Controllers
-const AuthController = require('./controllers/AuthController')
-
-// Task Controllers
-const TaskController = require('./controllers/TasksController')
-
-
+const AuthController = require("./controllers/AuthController");
+const TaskController = require("./controllers/TasksController");
+const auth = require("./middleware/auth");
 const route = Router();
 
-// Auth API Routes
-route.post('/auth/register', AuthController.Register);
-route.post('/auth/login', AuthController.Login);
-route.post('/auth/reset-password/:id', AuthController.ResetPassword);
-route.get('/auth/logout', AuthController.Logout);
-route.put('/auth/update-email/:id', AuthController.UpdateEmail);
-route.put('/auth/update-name/:id', AuthController.UpdateName);
-route.put('auth/update-reset-password/:id', AuthController.UpdatePassword);
-route.delete('/auth/delete-account/:id', AuthController.DeleteAccount);
+route.post("/auth/register", AuthController.Register);
+route.post("/auth/login", AuthController.Login);
+route.get("/auth/logout", AuthController.Logout);
+route.put("/auth/update-email/:id", auth, AuthController.UpdateEmail);
+route.put("/auth/update-name/:id", auth, AuthController.UpdateName);
+route.put("auth/update-reset-password/:id", auth, AuthController.UpdatePassword);
+route.delete("/auth/delete-account/:id", auth, AuthController.DeleteAccount);
 
-// Task API Routes
-route.post('/tasks', TaskController.CreateTask);
-route.get('/tasks', TaskController.GetAllTasks);
-route.get('/tasks/:id', TaskController.GetTask);
-route.put('/tasks/:id', TaskController.UpdateTask);
-route.delete('/tasks/:id', TaskController.DeleteTask);
+route.post("/tasks", auth, TaskController.CreateTask);
+route.get("/tasks", auth, TaskController.GetAllTasks);
+route.get("/tasks/:id", auth, TaskController.GetTask);
+route.put("/tasks/:id", auth, TaskController.UpdateTask);
+route.delete("/tasks/:id", auth, TaskController.DeleteTask);
 
-module.exports =  route;
+module.exports = route;
