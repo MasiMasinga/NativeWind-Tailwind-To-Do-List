@@ -1,5 +1,4 @@
 [x] Create Task API
 [x] Get Task API
-[x] Get Tasks API
 [x] Update Task API
 [x] Delete Task API

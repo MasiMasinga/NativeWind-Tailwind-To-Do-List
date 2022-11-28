@@ -15,12 +15,17 @@ model User {
   email String  @unique
   password String
   name  String?
-  tasks Tasks[]
+  // tasks Tasks[]
 }
+
+// model Tasks {
+//   id       String    @id @default(auto()) @map("_id") @db.ObjectId
+//   title    String
+//   author   User      @relation(fields: [authorId], references: [id])
+//   authorId String    @db.ObjectId
+// }
 
 model Tasks {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title    String
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @db.ObjectId
 }
